@@ -74,13 +74,36 @@ namespace Bai1
         {
             return IsValidPosition(x, y) ? Cells[x, y] : null;
         }
+        public ChessPieceType RemovePiece(int x, int y)
+        {
+            if (IsValidPosition(x, y) && Cells[x, y].PieceType != ChessPieceType.None)
+            {
+                ChessPieceType capturedPiece = Cells[x, y].PieceType;
+                Cells[x, y] = new Cell(); 
+                return capturedPiece;
+            }
+            return ChessPieceType.None; 
+        }
 
+        //public void MovePiece(int fromX, int fromY, int toX, int toY)
+        //{
+        //    if (IsValidPosition(fromX, fromY) && IsValidPosition(toX, toY))
+        //    {
+        //        Cells[toX, toY] = Cells[fromX, fromY];
+        //        Cells[fromX, fromY] = new Cell();
+        //    }
+        //}
         public void MovePiece(int fromX, int fromY, int toX, int toY)
         {
             if (IsValidPosition(fromX, fromY) && IsValidPosition(toX, toY))
             {
-                Cells[toX, toY] = Cells[fromX, fromY];
-                Cells[fromX, fromY] = new Cell();
+                if (Cells[toX, toY].PieceType != ChessPieceType.None)
+                {
+                    RemovePiece(toX, toY); 
+                }
+
+                Cells[toX, toY] = Cells[fromX, fromY]; 
+                Cells[fromX, fromY] = new Cell(); 
             }
         }
     }
