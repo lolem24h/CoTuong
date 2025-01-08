@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bai1
+namespace Bai1WithConsole
 {
     public class MainGame
     {
@@ -72,8 +72,12 @@ namespace Bai1
                 Console.WriteLine("Nước đi không hợp lệ theo luật di chuyển!");
                 return false;
             }
-
-            Console.WriteLine($"Nước đi hợp lệ: từ ({fromX}, {fromY}) đến ({toX}, {toY})");
+            else
+            {
+                Console.WriteLine("OK");
+                return true;
+            }
+            //Console.WriteLine($"Nước đi hợp lệ: từ ({fromX}, {fromY}) đến ({toX}, {toY})");
             Console.ReadKey();
             return true;
         }
@@ -81,9 +85,9 @@ namespace Bai1
         {
             string input;
             int fromX, fromY, toX, toY;
-            bool isRedTurn = true; 
-            
-            while (true) 
+            bool isRedTurn = true;
+
+            while (true)
             {
                 Console.WriteLine($"Lượt của {(isRedTurn ? "Người chơi ĐỎ" : "Người chơi ĐEN")}");
 
@@ -121,7 +125,7 @@ namespace Bai1
                 Console.ReadKey();
             }
         }
-        
+
         private static (int fromX, int fromY, int toX, int toY) GetComputerMove(bool isRedTurn, Board board, DataUtil dataUtil)
         {
             Random rnd = new Random();

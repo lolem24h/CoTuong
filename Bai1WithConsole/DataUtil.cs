@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bai1
+namespace Bai1WithConsole
 {
     public class DataUtil
     {
@@ -104,11 +104,11 @@ namespace Bai1
             // Không được qua sông
             if (board.GetCell(fromX, fromY).IsRed)
             {
-                if (toY < 5) return false; // Quân đỏ không được qua sông
+                if (toY > 4) return false; // Quân đỏ không được qua sông
             }
             else
             {
-                if (toY > 4) return false; // Quân đen không được qua sông
+                if (toY < 5) return false; // Quân đen không được qua sông
             }
 
             return board.GetCell(midX, midY) == null;
@@ -122,7 +122,7 @@ namespace Bai1
 
             // Kiểm tra trong cung
             if (toX < 3 || toX > 5) return false;
-            if (board.GetCell(fromX, fromY).IsRed)
+            if (!board.GetCell(fromX, fromY).IsRed)
             {
                 if (toY < 7 || toY > 9) return false; // Giới hạn cung đỏ
             }
@@ -142,7 +142,7 @@ namespace Bai1
             {
                 // Kiểm tra trong cung
                 if (toX < 3 || toX > 5) return false;
-                if (board.GetCell(fromX, fromY).IsRed)
+                if (!board.GetCell(fromX, fromY).IsRed)
                 {
                     if (toY < 7 || toY > 9) return false; // Giới hạn cung đỏ
                 }
